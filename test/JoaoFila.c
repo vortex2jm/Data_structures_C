@@ -88,3 +88,26 @@ char* retiraFila (Fila* f){
 
     return auxproced;
 }
+
+
+Fila* liberaFila (Fila* f){
+
+    Cell * atual, * proxima;
+
+    if(f){
+
+        atual = f->primeira;
+
+        while(atual){
+
+            if(atual->procedimento) free(atual->procedimento);
+
+            proxima = atual->proxima;
+            free(atual);
+            atual = proxima;
+        }
+        free(f);
+    }
+
+    return NULL;
+}   

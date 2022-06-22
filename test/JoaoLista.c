@@ -135,7 +135,35 @@ Tarefa* retiraTarefaLista (ListaTarefas* lista, char* nome){
 }
 
 
+void DeletaTarefa(Tarefa * tarefa){
+
+    if(tarefa){
+
+        if(tarefa->nome) free(tarefa->nome);
+
+        if(tarefa->fila); liberaFila(tarefa->fila);
+
+        free(tarefa);
+    }
+}
+
+
 ListaTarefas* liberaListaTarefas(ListaTarefas* lista){
 
-// implementar liberação da lista
+    Cell * atual, * proxima;
+    
+    if(lista){
+
+        atual = lista->primeira;
+
+        while(atual){
+
+            if(atual->tarefa) DeletaTarefa(atual->tarefa);
+
+            proxima = atual->proxima;
+            free(atual);
+            atual = proxima;
+        }
+        free(lista);
+    }
 }
