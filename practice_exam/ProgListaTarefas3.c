@@ -1,26 +1,13 @@
-/*
-
- * ProgListaTarefas2.c
- *
- * Segundo Testador: vale 8,0
- * Testa: Criação, inserção, impressão e retirada
- *
- *      Author: pdcosta
- */
-
-
 #include <stdio.h>
 #include "ListaTarefas.h"
 
-
 int main()
 {
-
     //criando a lista de tarefas de Paulo
-	ListaTarefas* lista = criaListaTarefas();
+    ListaTarefas* lista = criaListaTarefas();
 
-	//------------- criando base de dados para testes
-	Tarefa* tarefaProva = criaTarefa("EstudarProvaED");
+    //------------- criando base de dados para testes
+    Tarefa* tarefaProva = criaTarefa("EstudarProvaED");
     insereProcedimentoTarefa(tarefaProva, "Pegar material no site");
     insereProcedimentoTarefa(tarefaProva, "Baixar os slides");
     insereProcedimentoTarefa(tarefaProva, "Refazer todos os labs");
@@ -29,7 +16,7 @@ int main()
    //inserindo a tarefa na lista
     insereTarefaLista(lista, tarefaProva);
 
-	Tarefa* tarefaTrabalho = criaTarefa("FazerTrabalhoED");
+    Tarefa* tarefaTrabalho = criaTarefa("FazerTrabalhoED");
     insereProcedimentoTarefa(tarefaTrabalho, "Ler especificação");
     insereProcedimentoTarefa(tarefaTrabalho, "Marcar reuniões com a dupla");
     insereProcedimentoTarefa(tarefaTrabalho, "Projetar solução");
@@ -37,18 +24,14 @@ int main()
 
     insereTarefaLista(lista, tarefaTrabalho);
 
-	Tarefa* tarefaMatricula = criaTarefa("MatricularIngles");
+    Tarefa* tarefaMatricula = criaTarefa("MatricularIngles");
     insereProcedimentoTarefa(tarefaMatricula, "Preparar documentação");
     insereProcedimentoTarefa(tarefaMatricula, "Fazer prova nivelamento");
     insereProcedimentoTarefa(tarefaMatricula, "Pagar inscrição");
 
     insereTarefaLista(lista, tarefaMatricula);
 
-    //-----------------------------------------------------
-
-
-    // agora vamos manipular a lista para ver se as funções foram corretamente implementadas :)
-
+    // agora vamos manipular a lista 
 
     printf ("\n Lista de Tarefas: \n");
     //imprime a lista de tarefas
@@ -65,7 +48,7 @@ int main()
     Tarefa* t2 = retiraTarefaLista (lista, "FazerTrabalhoED");
 
     if (t2==NULL)
-     	printf ("\n Lista vazia ou tarefa não encontrada \n");
+         printf ("\n Lista vazia ou tarefa não encontrada \n");
 
 
     //agora vamos retirar uma tarefa no início da lista
@@ -83,6 +66,9 @@ int main()
      printf ("\n Lista de Tarefas: \n");
      imprimeListaTarefas(lista);
 
+
+     //liberando toda a memória utilizada.
+     lista = liberaListaTarefas(lista);
+
+     return 0;
 }
-
-
