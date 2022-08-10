@@ -33,9 +33,11 @@ void HashInsert(Hash map, Word * word){
     
     int index = GenerateIndex(GetCharSum(GetWord(word)));
 
-    //adicionar função de aumentar frequecia
-
     if(map[index]){
+        if(SameWords(map[index],word)){
+            SetFrequency(map[index],1);
+            return;
+        }
         SetNextWord(word, map[index]);
         map[index] = word;
         return;    

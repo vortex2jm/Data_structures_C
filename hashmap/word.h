@@ -19,4 +19,6 @@ Word * GetNextWord(Word * word);
 
 void DeleteWord(Word *word);
 
+int SameWords(Word * word1, Word * word2);
+
 #endif

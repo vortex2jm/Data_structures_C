@@ -25,7 +25,8 @@ Word *InitWord(char *word, int frequency)
 
 void PrintWord(Word *word)
 {
-    printf("%s\n", word->word);
+    printf("palavra = %s\n", word->word);
+    printf("frequencia = %d\n\n", word->frequency);
 }
 
 char *GetWord(Word *word)
@@ -40,7 +41,7 @@ int GetFrequency(Word *word)
 
 void SetFrequency(Word *word, int frequency)
 {
-    word->frequency = frequency;
+    word->frequency += frequency;
 }
 
 void SetNextWord(Word * currentWord, Word * nextWord){
@@ -59,4 +60,8 @@ void DeleteWord(Word *word)
             free(word->word);
         free(word);
     }
+}
+
+int SameWords(Word * word1, Word * word2){
+    return !strcmp(word1->word, word2->word);
 }
